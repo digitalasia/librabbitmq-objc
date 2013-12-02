@@ -26,6 +26,7 @@
 @class AMQPQueue;
 @class AMQPConsumer;
 @class AMQPMessage;
+
 @interface AMQPConsumerThread : NSThread
 
 @property (nonatomic, assign) NSObject<AMQPConsumerThreadDelegate> *delegate;

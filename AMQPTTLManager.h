@@ -16,7 +16,6 @@
 
 @interface CTXTTLManager : NSObject
 
-//- (BOOL)containsObject:(id)object;
 - (void)addObject:(id)object ttl:(NSTimeInterval)ttl;
 - (BOOL)updateObject:(id)object ttl:(NSTimeInterval)ttl;
 

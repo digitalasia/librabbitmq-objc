@@ -9,6 +9,7 @@
 #import "AMQPExchange.h"
 
 @class AMQPQueue;
+
 @interface AMQPExchange(Additions)
 
 - (void)publishMessage:(NSString *)body messageID:(NSString *)messageID usingRoutingKey:(NSString *)theRoutingKey;

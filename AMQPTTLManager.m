@@ -9,12 +9,6 @@
 #import "CTXTTLManager.h"
 #import <dispatch/source.h>
 
-@interface CTXTTLManager()
-
-- (void)_cancelTimerForObject:(id)object;
-
-@end
-
 @implementation CTXTTLManager
 {
     dispatch_queue_t    _lockQueue;
@@ -51,7 +45,6 @@
 - (void)addObject:(id)object ttl:(NSTimeInterval)ttl
 {
     dispatch_sync(_lockQueue, ^{
-//        NSAssert([_objects indexOfObject:object] == NSNotFound, @"object %@ already exists", object);
         if ([_objects indexOfObject:object] != NSNotFound) {
             return;
         }
@@ -104,13 +97,11 @@
     });
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Needs to be wrapped with the appropriate locking mechanism
-////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private Methods
+
 - (void)_cancelTimerForObject:(id)object
 {
     NSUInteger indexOfObject = [_objects indexOfObject:object];
-//    NSAssert(indexOfObject != NSNotFound, @"object %@ does not exist", object);
     
     if (indexOfObject == NSNotFound) {
         return;

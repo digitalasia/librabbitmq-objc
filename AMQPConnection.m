@@ -23,15 +23,11 @@
 //#import <sys/poll.h>
 
 #import "AMQPConnection.h"
+#import "AMQPChannel.h"
 
 #import "amqp.h"
 #import "amqp_framing.h"
 
-#import "AMQPChannel.h"
-
-////////////////////////////////////////////////////////////////////////////////
-// Exceptions
-////////////////////////////////////////////////////////////////////////////////
 NSString *const kAMQPConnectionException    = @"AMQPConnectionException";
 NSString *const kAMQPLoginException         = @"AMQPLoginException";
 NSString *const kAMQPOperationException     = @"AMQPException";
@@ -67,9 +63,7 @@ NSString *const kAMQPOperationException     = @"AMQPException";
     fcntl(socketFD, F_SETFL, O_ASYNC);
     fcntl(socketFD, F_SETNOSIGPIPE, 1);
 
-    ////////////////////////////////////////////////////////////////////////////////
     // SETUP TCP KEEPALIVE
-    ////////////////////////////////////////////////////////////////////////////////
 //    int optval = 1;
 //    socklen_t optlen = sizeof(optval);
 //    if (setsockopt(socketFD, SOL_SOCKET, SO_KEEPALIVE, &optval, optlen) < 0) {
